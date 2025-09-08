@@ -1,0 +1,27 @@
+.headerWrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  height: 100px;
+}
+.logoWrap {
+  width: 100px;
+}
+.logoWrap img {
+  width: 100%;
+}
+.centerMenuWrap {
+  display: flex;
+  gap: 10px;
+}
+.centerMenu {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.rightMenu {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
