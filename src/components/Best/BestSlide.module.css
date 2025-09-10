@@ -1,0 +1,16 @@
+.bestSlideWrap {
+  padding: 0 20px;
+  max-width: 1800px;
+  margin: 0 auto;
+}
+.bestSlideWrap .title {
+  text-align: center;
+  font-size: 35px;
+  font-weight: 500;
+  padding: 20px 0 20px;
+}
+.bestSlide {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(5, 1fr);
+}
