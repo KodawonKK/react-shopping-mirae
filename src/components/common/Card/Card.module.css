@@ -1,0 +1,42 @@
+.productTitle {
+  font-weight: 400;
+  color: #292929;
+  font-size: 15px;
+}
+.cardWrap {
+  cursor: pointer;
+}
+.cardImg {
+  max-height: 80%;
+}
+.cardBtm {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+.priceWrap {
+  display: flex;
+  gap: 5px;
+  align-items: flex-end;
+  flex-direction: row;
+}
+.dicount {
+  font-weight: bold;
+  color: rgb(255, 130, 130);
+}
+.sale {
+  font-weight: bold;
+  font-size: 17px;
+}
+.original {
+  text-decoration: line-through;
+}
+.iconWrap {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.review {
+  font-size: 14px;
+  color: #818181;
+}
