@@ -1,0 +1,57 @@
+.footerWrap {
+  padding: 20px 10px;
+  max-width: 1800px;
+  margin: 0 auto;
+}
+.footerTop {
+  display: flex;
+  gap: 10px;
+  justify-content: space-around;
+  align-items: center;
+}
+.leftMenu {
+  width: 30%;
+}
+.logoImg {
+  width: 35%;
+}
+.leftMenu img {
+  width: 100%;
+}
+.sns {
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.rightMenu {
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+}
+.menu {
+  display: flex;
+  flex-direction: column;
+}
+.menu h3 {
+  font-weight: 400;
+  font-size: 15px;
+}
+.menu span {
+  font-size: 13px;
+  color: #999;
+  cursor: pointer;
+}
+.menu span:hover {
+  text-decoration: underline;
+}
+.footerBtm {
+  font-size: 13px;
+  color: #333;
+}
+.footerBtm h4 {
+  padding: 10px 0;
+}
+.footerConnect {
+  padding: 10px 0;
+}
