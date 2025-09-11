@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./BestSlide.module.css";
 import product from "../../data/productList.json";
-import Card from "../common/card/Card";
+import Card from "../common/Card/Card";
 
 const BestSlide = () => {
   return (

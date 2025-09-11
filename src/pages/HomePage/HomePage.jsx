@@ -6,6 +6,8 @@ import banner2 from "../../assets/banner/banner3.jpg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
+import ProductSlide from "../../components/common/ProductSlide/ProductSlide";
+import BestSlide from "../../components/Best/BestSlide";
 
 const HomePage = () => {
   const bannerList = [
@@ -25,7 +27,7 @@ const HomePage = () => {
       <div className={styles.bannerWrap}>
         <Swiper
           slidesPerView={1}
-          // modules={[Autoplay]}
+          modules={[Autoplay]}
           autoplay={{
             delay: 2500,
             disableOnInteraction: false
@@ -42,6 +44,8 @@ const HomePage = () => {
           ))}
         </Swiper>
       </div>
+      <ProductSlide title={"신상품"} />
+      <BestSlide />
     </div>
   );
 };

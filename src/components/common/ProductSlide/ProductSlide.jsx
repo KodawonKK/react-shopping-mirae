@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import styles from "./Product.module.css";
 import product from "../../../data/productList.json";
-import Card from "../card/Card";
+import Card from "../Card/Card";
 
 const ProductSlide = ({ title }) => {
   return (
