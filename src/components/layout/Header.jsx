@@ -21,7 +21,9 @@ const Header = () => {
   return (
     <div className={styles.headerWrap}>
       <div className={styles.logoWrap}>
-        <img src={Logo} alt="로고" />
+        <Link to="/">
+          <img src={Logo} alt="로고" />
+        </Link>
       </div>
       <div className={styles.centerMenuWrap}>
         {menu.map((item, idx) => (
