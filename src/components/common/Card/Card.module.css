@@ -6,8 +6,10 @@
 .cardWrap {
   cursor: pointer;
 }
+
 .cardImg {
-  max-height: 80%;
+  width: 100%;
+  height: 100%;
 }
 .cardBtm {
   display: flex;
