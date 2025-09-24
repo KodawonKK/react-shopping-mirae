@@ -61,7 +61,7 @@
   text-decoration: line-through;
   color: #999;
 }
-.review {
+.reviewCount {
   font-size: 14px;
   color: #818181;
 }
@@ -218,7 +218,7 @@
   padding: 20px 0;
 }
 .recommendWrap {
-  padding-top: 100px;
+  padding-top: 30px;
 }
 .recommendWrap .recommTitle {
   font-size: 30px;
@@ -227,15 +227,16 @@
 }
 .reviewTop {
   display: flex;
-  max-width: 1000px;
+  align-items: flex-end;
+  justify-content: space-evenly;
   margin: 0 auto;
   padding: 20px 0;
-  gap: 20px;
+  border-bottom: 1px solid #e5e5e5;
 }
 .reviewScore {
   display: flex;
-  gap: 5px;
   align-items: center;
+  gap: 5px;
 }
 .reviewScore span {
   font-size: 38px;
@@ -244,5 +245,50 @@
 .scoreRatioWrap {
 }
 .scoreGraphWrap {
+  /* display: flex;
+  gap: 10px; */
+}
+.reviewContentWrap {
+  padding: 20px 0;
   display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+.profileWrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 5px;
+  width: 20%;
+}
+.profileImgWrap {
+  width: 36px;
+  height: 36px;
+  overflow: hidden;
+  border-radius: 100%;
+}
+.profileImgWrap img {
+  width: 100%;
+}
+.nickname {
+  font-size: 14px;
+}
+.profileRight {
+  width: 80%;
+}
+.heartRateWrap {
+  display: flex;
+}
+.content {
+}
+.selectOption {
+  display: flex;
+  font-size: 15px;
+  font-weight: 500;
+  color: #979797;
+  gap: 5px;
+  padding: 5px 0;
+}
+.review {
+  font-size: 14px;
 }

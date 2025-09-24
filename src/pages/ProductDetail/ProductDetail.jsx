@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { formatPrice } from "../../utils/formatPrice";
 import styles from "./ProductDetail.module.css";
 import product from "../../data/productList.json";
+import productReview from "../../data/productReview.json";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { CiShare2 } from "react-icons/ci";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
@@ -14,8 +15,9 @@ import ModelInfoImg from "../../assets/item/model-info.png";
 import ProductSlide from "../../components/common/ProductSlide/ProductSlide";
 import ProductDetailBtm from "../../components/common/ProductDetailBtm/ProductDetailBtm";
 import { FaHeart } from "react-icons/fa6";
-import SimpleHorizontalBar from "../../components/common/chart/HorizontalBar";
 import HorizontalBar from "../../components/common/chart/HorizontalBar";
+import ProfileImg from "../../assets/profile/profile-img.jpg";
+import HeartRating from "../../components/common/HeartRating/HeartRating";
 
 const ProductDetail = () => {
   const id = useParams().id;
@@ -30,6 +32,7 @@ const ProductDetail = () => {
     { title: "배송예상", info: "무료배송" }
   ];
   const productEtcMenu = ["배송안내", "모델 및 사이즈 정보"];
+  const heartRate = [5, 3, 4, 2, 3];
 
   const imgClick = (id) => {
     setImgUrl(id);
@@ -69,7 +72,7 @@ const ProductDetail = () => {
               <span className={styles.sale}>{productData?.price?.sale}</span>
               <span className={styles.original}>{productData?.price?.original}</span>
             </div>
-            <span className={styles.review}>리뷰 0</span>
+            <span className={styles.reviewCount}>리뷰 0</span>
           </div>
           <div className={styles.paymentInfoWrap}>
             {paymentMenu.map((item, idx) => (
@@ -173,20 +176,35 @@ const ProductDetail = () => {
               <span>/</span>
               <span>5</span>
             </div>
-
-            {/* <div className={styles.scoreRatioWrap}>
+            <div className={styles.scoreRatioWrap}>
               <div className={styles.scoreGraphWrap}>
-                <div>색상</div>
-                <div>똑같아요</div>
                 <HorizontalBar />
-                <div>92%</div>
               </div>
-
-              <div>사이즈</div>
             </div>
-            <div></div> */}
           </div>
+          {productReview.map((item, idx) => (
+            <div className={styles.reviewContentWrap} key={idx}>
+              <div className={styles.profileWrap}>
+                <div className={styles.profileImgWrap}>
+                  <img src={ProfileImg} alt="프로필 이미지" />
+                </div>
+                <span className={styles.nickname}>{item.nickname}</span>
+              </div>
+              <div className={styles.profileRight}>
+                <HeartRating score={item.score} />
+                <div className={styles.content}>
+                  <div className={styles.selectOption}>
+                    <span>{item.options[0]}</span>
+                    <span>{item.options[1]}</span>
+                    <span>{item.options[2]}</span>
+                  </div>
+                  <p className={styles.review}>{item.review}</p>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
+
         <div className={styles.recommendWrap}>
           <h3 className={styles.recommTitle}>함께 코디하기 좋은 상품</h3>
           <ProductSlide />

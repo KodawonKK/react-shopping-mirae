@@ -1,0 +1,14 @@
+.productDetailBtmMenu {
+  display: flex;
+  justify-content: space-around;
+}
+.productBtmList {
+  padding: 10px 0;
+  border-bottom: 1px solid #e5e5e5;
+  width: 25%;
+  text-align: center;
+  cursor: pointer;
+}
+.active {
+  border-bottom: 1px solid #000;
+}
