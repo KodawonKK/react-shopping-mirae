@@ -1,0 +1,32 @@
+.horizontalWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.horizontalGraph {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 5px;
+}
+.kind {
+  min-width: 15%;
+}
+.content {
+  min-width: 20%;
+}
+.horizontalBarWrap {
+  width: 200px;
+  height: 18px;
+  border-radius: 10px;
+  background: #3333;
+  align-items: center;
+}
+.horizontalBar {
+  background: #ff7f7f;
+  height: 18px;
+  border-radius: 10px;
+}
+.percent {
+  min-width: 15%;
+}
