@@ -3,7 +3,7 @@ import styles from "./ProductDetailBtm.module.css";
 
 const ProductDetailBtm = ({ idx }) => {
   const [activeIndex, setActiveIndex] = useState(idx);
-  const productBtmMenu = ["상세정보", "리뷰", "Q&A", "배송/교환/환불 안내"];
+  const productBtmMenu = ["상세정보", "리뷰", "FAQ", "배송/교환/환불 안내"];
 
   const menuClick = (idx) => {
     setActiveIndex(idx);
