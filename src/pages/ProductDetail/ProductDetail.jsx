@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { formatPrice } from "../../utils/formatPrice";
 import styles from "./ProductDetail.module.css";
@@ -35,6 +35,13 @@ const ProductDetail = () => {
     { title: "배송예상", info: "무료배송" }
   ];
   const productEtcMenu = ["배송안내", "모델 및 사이즈 정보"];
+
+  const detailRef = useRef(null);
+  const reviewRef = useRef(null);
+  const faqRef = useRef(null);
+  const deliveryRef = useRef(null);
+
+  const sectionRefs = [detailRef, reviewRef, faqRef, deliveryRef];
 
   // const imgClick = () => {
   //   setImgUrl(id);
@@ -163,16 +170,16 @@ const ProductDetail = () => {
           </div>
         </div>
       </div>
-      <div className={styles.productDetailBtm}>
-        <ProductDetailBtm idx={0} />
+      <div className={styles.productDetailBtm} ref={detailRef}>
+        <ProductDetailBtm idx={0} refs={sectionRefs} />
         <div className={styles.detailImg}>
           <img src={DetailImg} alt="상세정보이미지" />
         </div>
         <div className={styles.modelInfoImg}>
           <img src={ModelInfoImg} alt="" />
         </div>
-        <div className={styles.reviewWrap}>
-          <ProductDetailBtm idx={1} />
+        <div className={styles.reviewWrap} ref={reviewRef}>
+          <ProductDetailBtm idx={1} refs={sectionRefs} />
           {/* review ratio */}
           <div className={styles.reviewTop}>
             <div className={styles.reviewScore}>
@@ -210,11 +217,11 @@ const ProductDetail = () => {
               </div>
             </div>
           ))}
-          <div className={styles.reviewAllBtnWrap}>
+          <div className={styles.reviewAllBtnWrap} ref={faqRef}>
             <button className={styles.reviewAllBtn}>리뷰 전체보기</button>
           </div>
         </div>
-        <ProductDetailBtm idx={2} />
+        <ProductDetailBtm idx={2} refs={sectionRefs} />
         <div className={styles.faqWrap}>
           <div className={styles.faqHeader}>
             {/* <h2>자주 묻는 질문(FAQ)</h2> */}
@@ -235,8 +242,8 @@ const ProductDetail = () => {
             </div>
           ))}
         </div>
-        <ProductDetailBtm idx={3} />
-        <div className={styles.deliveryPolicyWrap}>
+        <ProductDetailBtm idx={3} refs={sectionRefs} />
+        <div className={styles.deliveryPolicyWrap} ref={deliveryRef}>
           {deliveryPolicy.map((item, idx) => (
             <div className={styles.deliveryPolicyList} key={idx}>
               <div className={styles.deliveryTitle}>{item.title}</div>
