@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { formatPrice } from "../../utils/formatPrice";
 import styles from "./ProductDetail.module.css";
@@ -9,7 +9,7 @@ import { CiShare2 } from "react-icons/ci";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import "swiper/css";
 import LikeBtn from "../../components/common/button/LikeBtn/LikeBtn";
-import { SlArrowRight } from "react-icons/sl";
+import { SlArrowRight, SlArrowDown, SlArrowUp } from "react-icons/sl";
 import DetailImg from "../../assets/item/detail-image.png";
 import ModelInfoImg from "../../assets/item/model-info.png";
 import ProductSlide from "../../components/common/ProductSlide/ProductSlide";
@@ -18,12 +18,15 @@ import { FaHeart } from "react-icons/fa6";
 import HorizontalBar from "../../components/common/chart/HorizontalBar";
 import ProfileImg from "../../assets/profile/profile-img.jpg";
 import HeartRating from "../../components/common/HeartRating/HeartRating";
+import faqData from "../../data/qnaList.json";
+import deliveryPolicy from "../../data/deliveryPolicy.json";
 
 const ProductDetail = () => {
   const id = useParams().id;
-  const [imgUrl, setImgUrl] = useState(id);
-  const [count, setCount] = useState(0);
   const productData = product.find((item) => item.id === Number(id));
+  const [imgUrl, setImgUrl] = useState(productData?.id);
+  const [count, setCount] = useState(0);
+  const [openIdx, setOpenIdx] = useState(null);
   const discountRate = formatPrice(productData?.price?.sale, productData?.price?.original);
   const formatter = new Intl.NumberFormat("ko-KR");
   const paymentMenu = [
@@ -32,15 +35,18 @@ const ProductDetail = () => {
     { title: "배송예상", info: "무료배송" }
   ];
   const productEtcMenu = ["배송안내", "모델 및 사이즈 정보"];
-  const heartRate = [5, 3, 4, 2, 3];
 
-  const imgClick = (id) => {
-    setImgUrl(id);
-  };
+  // const imgClick = () => {
+  //   setImgUrl(id);
+  // };
   const amountCal = () => {
     const salePrice = Number(productData?.price?.sale?.replace(/,/g, "")) || 0;
     return formatter.format(salePrice * count);
   };
+
+  useEffect(() => {
+    setImgUrl(productData?.id);
+  }, [productData?.id]);
 
   return (
     <div className={styles.productDetailWrap}>
@@ -53,7 +59,7 @@ const ProductDetail = () => {
           <div className={styles.productImgBtm}>
             <Swiper slidesPerView={5} spaceBetween={10} loop>
               {product.map((item, idx) => (
-                <SwiperSlide key={idx} onClick={() => imgClick(item.id)} className={styles.productImg}>
+                <SwiperSlide key={idx} className={styles.productImg}>
                   <img src={require(`../../assets/item/${item.id}.jpg`)} alt="상품이미지" width="100%" />
                 </SwiperSlide>
               ))}
@@ -76,10 +82,8 @@ const ProductDetail = () => {
           </div>
           <div className={styles.paymentInfoWrap}>
             {paymentMenu.map((item, idx) => (
-              <div className={styles.paymentInfo}>
-                <span className={styles.payTitle} key={idx}>
-                  {item.title}
-                </span>
+              <div className={styles.paymentInfo} key={idx}>
+                <span className={styles.payTitle}>{item.title}</span>
                 <span className={styles.payInfo}>{item.info}</span>
               </div>
             ))}
@@ -169,6 +173,7 @@ const ProductDetail = () => {
         </div>
         <div className={styles.reviewWrap}>
           <ProductDetailBtm idx={1} />
+          {/* review ratio */}
           <div className={styles.reviewTop}>
             <div className={styles.reviewScore}>
               <FaHeart color="#ff7f7f" size={38} style={{ marginTop: "5px" }} />
@@ -182,6 +187,7 @@ const ProductDetail = () => {
               </div>
             </div>
           </div>
+          {/* review */}
           {productReview.map((item, idx) => (
             <div className={styles.reviewContentWrap} key={idx}>
               <div className={styles.profileWrap}>
@@ -194,6 +200,7 @@ const ProductDetail = () => {
                 <HeartRating score={item.score} />
                 <div className={styles.content}>
                   <div className={styles.selectOption}>
+                    <h3 className={styles.optionTitle}>옵션:</h3>
                     <span>{item.options[0]}</span>
                     <span>{item.options[1]}</span>
                     <span>{item.options[2]}</span>
@@ -203,8 +210,40 @@ const ProductDetail = () => {
               </div>
             </div>
           ))}
+          <div className={styles.reviewAllBtnWrap}>
+            <button className={styles.reviewAllBtn}>리뷰 전체보기</button>
+          </div>
         </div>
-
+        <ProductDetailBtm idx={2} />
+        <div className={styles.faqWrap}>
+          <div className={styles.faqHeader}>
+            {/* <h2>자주 묻는 질문(FAQ)</h2> */}
+            <p>배송, 교환/반품, 상품 관련 궁금한 점을 확인하고 필요한 경우 문의를 남겨보세요.</p>
+          </div>
+          {faqData.map((item, idx) => (
+            <div className={styles.faqList} key={idx}>
+              <div
+                className={styles.questionWrap}
+                onClick={() => {
+                  setOpenIdx(openIdx === idx ? null : idx);
+                }}
+              >
+                <p>Q. {item.question}</p>
+                {openIdx === idx ? <SlArrowUp /> : <SlArrowDown />}
+              </div>
+              {openIdx === idx && <div className={styles.answerWrap}>{item.answer}</div>}
+            </div>
+          ))}
+        </div>
+        <ProductDetailBtm idx={3} />
+        <div className={styles.deliveryPolicyWrap}>
+          {deliveryPolicy.map((item, idx) => (
+            <div className={styles.deliveryPolicyList} key={idx}>
+              <div className={styles.deliveryTitle}>{item.title}</div>
+              <div className={styles.deliveryContent}>{item.details}</div>
+            </div>
+          ))}
+        </div>
         <div className={styles.recommendWrap}>
           <h3 className={styles.recommTitle}>함께 코디하기 좋은 상품</h3>
           <ProductSlide />
