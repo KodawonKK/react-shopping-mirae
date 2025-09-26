@@ -28,6 +28,7 @@ const HomePage = () => {
         <Swiper
           slidesPerView={1}
           modules={[Autoplay]}
+          loop={true}
           autoplay={{
             delay: 2500,
             disableOnInteraction: false
