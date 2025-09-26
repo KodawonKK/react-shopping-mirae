@@ -5,16 +5,16 @@ import styles from "./ProductDetail.module.css";
 import product from "../../data/productList.json";
 import productReview from "../../data/productReview.json";
 import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 import { CiShare2 } from "react-icons/ci";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
-import "swiper/css";
+import { FaHeart } from "react-icons/fa6";
 import LikeBtn from "../../components/common/button/LikeBtn/LikeBtn";
 import { SlArrowRight, SlArrowDown, SlArrowUp } from "react-icons/sl";
 import DetailImg from "../../assets/item/detail-image.png";
 import ModelInfoImg from "../../assets/item/model-info.png";
 import ProductSlide from "../../components/common/ProductSlide/ProductSlide";
 import ProductDetailBtm from "../../components/common/ProductDetailBtm/ProductDetailBtm";
-import { FaHeart } from "react-icons/fa6";
 import HorizontalBar from "../../components/common/chart/HorizontalBar";
 import ProfileImg from "../../assets/profile/profile-img.jpg";
 import HeartRating from "../../components/common/HeartRating/HeartRating";
@@ -102,10 +102,10 @@ const ProductDetail = () => {
                 <span>COLOR</span>
                 <div className={styles.optionBtnWrap}>
                   <button>
-                    <span className={styles.color}></span>NAVY
+                    <span className={styles.color} style={{ background: "navy" }}></span>NAVY
                   </button>
                   <button>
-                    <span className={styles.color}></span>BROWN
+                    <span className={styles.color} style={{ background: "brown" }}></span>BROWN
                   </button>
                 </div>
               </div>
